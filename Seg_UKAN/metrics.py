@@ -4,24 +4,8 @@ import torch.nn.functional as F
 
 from medpy.metric.binary import jc, dc, hd, hd95, recall, specificity, precision
 
-def compute_precision(output, target):
-    # Placeholder for actual precision calculation
-    # Assuming output and target are binary masks
-    true_positive = ((output == 1) & (target == 1)).sum().item()
-    false_positive = ((output == 1) & (target == 0)).sum().item()
-    
-    precision_value = true_positive / (true_positive + false_positive + 1e-10)  # Add epsilon to avoid division by zero
-    return precision_value
-    
-def compute_recall(output, target):
-    # Placeholder for actual recall calculation
-    true_positive = ((output == 1) & (target == 1)).sum().item()
-    false_negative = ((output == 0) & (target == 1)).sum().item()
-    
-    recall_value = true_positive / (true_positive + false_negative + 1e-10)  # Add epsilon to avoid division by zero
-    return recall_value
-    
 
+    
 def iou_score(output, target):
     smooth = 1e-5
 
@@ -37,7 +21,6 @@ def iou_score(output, target):
     dice = (2* iou) / (iou+1)
     precision = compute_precision(output, target)  # Call function to get the precision value
     recall = compute_recall(output, target)  # Call function to get the recall value
-    f1_ = 2 * (precision * recall) / (precision + recall)
 
     try:
         hd95_ = hd95(output_, target_)
@@ -72,7 +55,6 @@ def indicators(output, target):
     recall_ = recall(output_, target_)
     specificity_ = specificity(output_, target_)
     precision_ = precision(output_, target_)
-    f1_= 2 * (precision * recall) / (precision + recall)
 
 
     return iou_, dice_, hd_, hd95_, recall_, specificity_, precision_,f1_

@@ -20,6 +20,7 @@ def iou_score(output, target):
     union = (output_ | target_).sum()
     iou = (intersection + smooth) / (union + smooth)
     dice = (2* iou) / (iou+1) 
+    F1_ = 0
 
 
     try:

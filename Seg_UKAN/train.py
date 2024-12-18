@@ -153,14 +153,14 @@ def train(config, train_loader, model, criterion, optimizer):
                 loss += criterion(output, target)
             loss /= len(outputs)
 
-            iou, dice,F1_, _ = iou_score(outputs[-1], target)
-            iou_, dice_, hd_, hd95_, recall_, specificity_, precision_,F1_ = indicators(outputs[-1], target)
+            iou, dice,f1_, _ = iou_score(outputs[-1], target)
+            iou_, dice_, hd_, hd95_, recall_, specificity_, precision_,f1_ = indicators(outputs[-1], target)
             
         else:
             output = model(input)
             loss = criterion(output, target)
-            iou, dice,F1_, _ = iou_score(output, target)
-            iou_, dice_, hd_, hd95_, recall_, specificity_, precision_,F1_ = indicators(output, target)
+            iou, dice,f1_, _ = iou_score(output, target)
+            iou_, dice_, hd_, hd95_, recall_, specificity_, precision_,f1_ = indicators(output, target)
 
         # compute gradient and do optimizing step
         optimizer.zero_grad()

@@ -19,6 +19,7 @@ def iou_score(output, target):
     union = (output_ | target_).sum()
     iou = (intersection + smooth) / (union + smooth)
     dice = (2* iou) / (iou+1)
+    f1_= 2 * (precision_ * recall_) / (precision_ + recall_)
 
     try:
         hd95_ = hd95(output_, target_)

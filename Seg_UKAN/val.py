@@ -124,6 +124,7 @@ def main():
     iou_avg_meter = AverageMeter()
     dice_avg_meter = AverageMeter()
     hd95_avg_meter = AverageMeter()
+    F1_avg_meter =  AverageMeter()
 
     with torch.no_grad():
         for input, target, meta in tqdm(val_loader, total=len(val_loader)):

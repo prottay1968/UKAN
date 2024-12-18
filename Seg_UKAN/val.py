@@ -134,7 +134,7 @@ def main():
             # compute output
             output = model(input)
 
-            iou, dice, hd95_, F1 = iou_score(output, target)
+            iou, dice, hd95_, F1_ = iou_score(output, target)
             iou_avg_meter.update(iou, input.size(0))
             dice_avg_meter.update(dice, input.size(0))
             hd95_avg_meter.update(hd95_, input.size(0))

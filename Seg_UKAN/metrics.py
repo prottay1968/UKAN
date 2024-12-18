@@ -53,5 +53,6 @@ def indicators(output, target):
     recall_ = recall(output_, target_)
     specificity_ = specificity(output_, target_)
     precision_ = precision(output_, target_)
+    F1_= 2 * (precision_ * recall_) / (precision_ + recall_)
 
-    return iou_, dice_, hd_, hd95_, recall_, specificity_, precision_
+    return iou_, dice_, hd_, hd95_, recall_, specificity_, precision_,F1_

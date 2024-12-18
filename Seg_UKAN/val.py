@@ -134,11 +134,11 @@ def main():
             # compute output
             output = model(input)
 
-            iou, dice, hd95_, precision_, recall_ f1_ = indicators(output, target)
-            iou_avg_meter.update(iou, input.size(0))
-            dice_avg_meter.update(dice, input.size(0))
+            iou_, dice_, hd_, hd95_, recall_, specificity_, precision_,f1_ = indicators(output, target)
+            iou_avg_meter.update(iou_, input.size(0))
+            dice_avg_meter.update(dice_, input.size(0))
             hd95_avg_meter.update(hd95_, input.size(0))
-            f1_avg_meter.update(hd95_, input.size(0))
+            f1_avg_meter.update(f1_, input.size(0))
 
             output = torch.sigmoid(output).cpu().numpy()
             output[output>=0.5]=1

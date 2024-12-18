@@ -133,10 +133,11 @@ def main():
             # compute output
             output = model(input)
 
-            iou, dice, hd95_ = iou_score(output, target)
+            iou, dice, hd95_, F1 = iou_score(output, target)
             iou_avg_meter.update(iou, input.size(0))
             dice_avg_meter.update(dice, input.size(0))
             hd95_avg_meter.update(hd95_, input.size(0))
+            F1_avg_meter.update(hd95_, input.size(0))
 
             output = torch.sigmoid(output).cpu().numpy()
             output[output>=0.5]=1
@@ -154,6 +155,7 @@ def main():
     print('IoU: %.4f' % iou_avg_meter.avg)
     print('Dice: %.4f' % dice_avg_meter.avg)
     print('HD95: %.4f' % hd95_avg_meter.avg)
+    print('F1: %.4f' % F1_avg_meter.avg)
 
 
 

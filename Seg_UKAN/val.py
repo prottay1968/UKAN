@@ -19,6 +19,7 @@ import archs
 
 from dataset import Dataset
 from metrics import iou_score
+from metrics import indicators
 from utils import AverageMeter
 from albumentations import RandomRotate90,Resize
 import time

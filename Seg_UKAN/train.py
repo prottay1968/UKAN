@@ -203,11 +203,11 @@ def validate(config, val_loader, model, criterion):
                 for output in outputs:
                     loss += criterion(output, target)
                 loss /= len(outputs)
-                iou, dice, _ = iou_score(outputs[-1], target)
+                iou, dice,f1_, _ = iou_score(outputs[-1], target)
             else:
                 output = model(input)
                 loss = criterion(output, target)
-                iou, dice, _ = iou_score(output, target)
+                iou, dice,f1_, _ = iou_score(output, target)
 
             avg_meters['loss'].update(loss.item(), input.size(0))
             avg_meters['iou'].update(iou, input.size(0))

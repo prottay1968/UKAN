@@ -20,6 +20,7 @@ def iou_score(output, target):
     union = (output_ | target_).sum()
     iou = (intersection + smooth) / (union + smooth)
     dice = (2* iou) / (iou+1)
+    iou, dice, F1_ = iou_score(output, target) 
 
 
     try:
@@ -27,7 +28,7 @@ def iou_score(output, target):
     except:
         hd95_ = 0
     
-    return iou, dice, hd95_
+    return iou, dice, hd95_, F1_
 
 
 def dice_coef(output, target):

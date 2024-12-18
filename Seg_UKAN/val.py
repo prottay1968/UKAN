@@ -124,7 +124,7 @@ def main():
     iou_avg_meter = AverageMeter()
     dice_avg_meter = AverageMeter()
     hd95_avg_meter = AverageMeter()
-    F1_avg_meter =  AverageMeter()
+    f1_avg_meter =  AverageMeter()
 
     with torch.no_grad():
         for input, target, meta in tqdm(val_loader, total=len(val_loader)):
@@ -138,7 +138,7 @@ def main():
             iou_avg_meter.update(iou, input.size(0))
             dice_avg_meter.update(dice, input.size(0))
             hd95_avg_meter.update(hd95_, input.size(0))
-            F1_avg_meter.update(hd95_, input.size(0))
+            f1_avg_meter.update(hd95_, input.size(0))
 
             output = torch.sigmoid(output).cpu().numpy()
             output[output>=0.5]=1
@@ -156,7 +156,7 @@ def main():
     print('IoU: %.4f' % iou_avg_meter.avg)
     print('Dice: %.4f' % dice_avg_meter.avg)
     print('HD95: %.4f' % hd95_avg_meter.avg)
-    print('F1: %.4f' % F1_avg_meter.avg)
+    print('F1: %.4f' % f1_avg_meter.avg)
 
 
 

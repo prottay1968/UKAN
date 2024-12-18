@@ -3,8 +3,7 @@ import torch
 import torch.nn.functional as F
 
 from medpy.metric.binary import jc, dc, hd, hd95, recall, specificity, precision
-from metrics import compute_precision
-from metrics import compute_recall
+
 
 
     
@@ -21,8 +20,7 @@ def iou_score(output, target):
     union = (output_ | target_).sum()
     iou = (intersection + smooth) / (union + smooth)
     dice = (2* iou) / (iou+1)
-    precision = compute_precision(output, target)  # Call function to get the precision value
-    recall = compute_recall(output, target)  # Call function to get the recall value
+
 
     try:
         hd95_ = hd95(output_, target_)

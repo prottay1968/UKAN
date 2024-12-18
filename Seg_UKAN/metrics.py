@@ -55,13 +55,5 @@ def indicators(output, target):
     precision_ = precision(output_, target_)
     F1_= 2 * (precision_ * recall_) / (precision_ + recall_)
 
-def compute_F1_(output, target):
-    # Assuming you already have precision and recall defined
-    precision = compute_precision(output, target)
-    recall = compute_recall(output, target)
-    if precision + recall == 0:  # To avoid division by zero
-        return 0
-    return 2 * (precision * recall) / (precision + recall)
-
 
     return iou_, dice_, hd_, hd95_, recall_, specificity_, precision_,F1_

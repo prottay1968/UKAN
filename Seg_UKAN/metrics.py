@@ -27,7 +27,7 @@ def iou_score(output, target):
     except:
         hd95_ = 0
     
-    return iou, dice, hd95_
+    return iou, dice, hd95_, F1_
 
 
 def dice_coef(output, target):

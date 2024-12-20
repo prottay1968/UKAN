@@ -1,4 +1,4 @@
-pytorch-fid==0.30.0
+pytorch-fid==0.3.0
 torch==2.3.0
 torchvision==0.18.0
 tqdm

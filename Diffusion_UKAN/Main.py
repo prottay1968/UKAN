@@ -12,7 +12,7 @@ def main(model_config = None):
         train(modelConfig)
         modelConfig['batch_size'] = 64
         modelConfig['test_load_weight'] = 'ckpt_{}_.pt'.format(modelConfig['epoch'])
-        for i in range(25):
+        for i in range(32):
             modelConfig["sampledImgName"] = "sampledImgName{}.png".format(i)
             eval(modelConfig)
     else:
